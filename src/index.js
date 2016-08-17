@@ -37,12 +37,21 @@ class PrettyNumber extends React.Component {
     }
     
     
+    display () {
+        if (this.props.abbreviate === false || this.props.units === false) {
+            return this.delimit(this.props.number);
+        } else {
+            return this.abbreviate(this.props.number);
+        }
+    }
+    
+    
     render () {
-        let { number, units } = this.props
+        let { number } = this.props
         
         return (
             <span className={this.props.className} title={this.delimit(number)}>
-                {this.abbreviate(number)}
+                {this.display(number)}
             </span>
         );
     }
@@ -51,12 +60,14 @@ class PrettyNumber extends React.Component {
 
 PrettyNumber.propTypes = {
     number: React.PropTypes.number.isRequired,
+    abbreviate: React.PropTypes.boolean,
     units: React.PropTypes.array,
     className: React.PropTypes.string
 };
 
 
 PrettyNumber.defaultProps = {
+    abbreviate: true,
     units: ['', 'K', 'M', 'B', 'T', 'Q'],
     className: ''
 };
