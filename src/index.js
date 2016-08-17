@@ -60,7 +60,7 @@ class PrettyNumber extends React.Component {
 
 PrettyNumber.propTypes = {
     number: React.PropTypes.number.isRequired,
-    abbreviate: React.PropTypes.boolean,
+    abbreviate: React.PropTypes.bool,
     units: React.PropTypes.array,
     className: React.PropTypes.string
 };
